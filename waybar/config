@@ -1,0 +1,127 @@
+{
+    "layer": "top",
+    "position": "left",
+    "width": 24,
+    "spacing": 8,
+    "margin-top": 36,
+    "margin-bottom": 36,
+    // "reload_style_on_change": true,
+    "modules-left": [
+        "clock"
+    ],
+    "modules-center": [
+        "sway/workspaces"
+    ],
+    "modules-right": [
+        "bluetooth",
+        "network",
+        "custom/screenrecorder",
+        "wireplumber",
+        "cpu",
+        "memory",
+        "battery",
+        "tray",
+    ],
+    "sway/workspaces": {
+        "format": "{icon}",
+        "all-outputs": true,
+        "disable-scroll": true,
+        "disable-click": false,
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "urgent": "",
+            "focused": "",
+            "default": "",
+            "high-priority-named": [
+                "1",
+                "2"
+            ]
+        }
+    },
+    "wireplumber": {
+        "format": "{icon}\n{volume}",
+        "format-muted": "",
+        "on-click": "pavucontrol",
+        "max-volume": 100,
+        "scroll-step": 0.05,
+        "format-icons": [
+            "",
+            "",
+            ""
+        ]
+    },
+    "tray": {
+        "icon-size": 14,
+        "spacing": 4
+    },
+    "clock": {
+        "interval": 60,
+        "tooltip": true,
+        "format": "{:%H\n--\n%M}",
+        "tooltip-format": "{:%Y-%m-%d}"
+    },
+    "cpu": {
+        "interval": 10,
+        "format": "\n{usage}",
+        "on-click": "foot -T 'htop' htop"
+    },
+    "memory": {
+        "interval": 30,
+        "format": "\n{percentage}"
+    },
+    "battery": {
+        "bat": "BAT0",
+        "interval": 60,
+        "states": {
+            "warning": 20,
+            "critical": 10
+        },
+        "format": "{icon}\n{capacity}",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    "network": {
+        "format-wifi": "",
+        "format-ethernet": "",
+        "format-disconnected": "",
+        "on-click": "foot -T 'nmtui' nmtui",
+        "tooltip-format": "{essid}: {signalStrength}%\n{gwaddr}"
+    },
+    // "bluetooth": {
+    //     "format": " {status}",
+    //     // "format-disabled": "", // an empty format will hide the module
+    //     "format-connected": " {num_connections} connected",
+    //     "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+    //     "tooltip-format": "{controller_alias}\t{controller_address}",
+    //     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+    //     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+    // },
+    "bluetooth": {
+        // "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
+        "format": "",
+        "on-click": "blueberry",
+	    "format-connected-battery": "\n{device_battery_percentage}",
+        "tooltip-format": "{controller_alias}\t{controller_address}",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+    },
+    "custom/screenrecorder": {
+        "exec": "$HOME/.config/waybar/waybar-screenrecorder/screenrecorder status",
+        "interval": "once",
+        "signal": 1,
+        "return-type": "json",
+        "tooltip": true,
+        "format": "{}",
+        "on-click": "$HOME/.config/waybar/waybar-screenrecorder/screenrecorder toggle fullscreen",
+        "on-click-right": "$HOME/.config/waybar/waybar-screenrecorder/screenrecorder toggle region"
+    },
+}

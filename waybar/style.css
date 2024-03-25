@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  color: white;
+  font-size: 14px;
+  font-family: "JetBrains Mono";
+}
+
+window#waybar {
+  background: rgba(32, 32, 32, 0.42);
+  /* border-radius: 0 20px 20px 0; */
+  border-radius: 20px;
+}
+
+#workspaces button {
+  border-radius: 50%;
+  margin: 2px 0;
+}
+
+#workspaces button.focused {
+  background: rgba(53, 53, 53, 0.6);
+  padding: 1px;
+}
+
+#clock {
+  margin-top: 16px;
+}
+
+#battery {
+  margin-bottom: 16px;
+}
