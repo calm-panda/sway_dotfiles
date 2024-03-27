@@ -20,7 +20,7 @@
         "cpu",
         "memory",
         "battery",
-        "tray",
+        "tray"
     ],
     "sway/workspaces": {
         "format": "{icon}",
@@ -61,8 +61,8 @@
     "clock": {
         "interval": 60,
         "tooltip": true,
-        "format": "{:%H\n--\n%M}",
-        "tooltip-format": "{:%Y-%m-%d}"
+        "format": "{:%H\n••\n%M}",
+        "tooltip-format": "{:%d-%m-%Y\n%A}"
     },
     "cpu": {
         "interval": 10,
@@ -75,12 +75,13 @@
     },
     "battery": {
         "bat": "BAT0",
-        "interval": 60,
+        "interval": 30,
         "states": {
             "warning": 20,
             "critical": 10
         },
         "format": "{icon}\n{capacity}",
+        "format-charging": " \n{capacity}",
         "format-icons": [
             "",
             "",
