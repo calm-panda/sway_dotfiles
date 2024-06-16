@@ -1,30 +1,97 @@
 * {
-  margin: 0;
-  padding: 0;
   border: none;
-  color: white;
-  font-size: 14px;
-  font-family: "JetBrains Mono";
+  border-radius: 0;
+  font-family: FontAwesome;
+  font-size: 13px;
+  min-height: 0;
 }
 
 window#waybar {
-  background: rgba(32, 32, 32, 0.42);
-  border-radius: 20px;
+  background: rgba(43, 48, 59, 0.5);
+  color: white;
+}
+
+tooltip {
+  background: rgba(43, 48, 59, 0.5);
+  border: 1px solid rgba(100, 114, 125, 0.5);
+}
+
+tooltip label {
+  color: white;
 }
 
 #workspaces button {
-  border-radius: 50%;
-  margin: 2px 0;
+  padding: 0 10px;
+  background: transparent;
+  color: white;
 }
 
 #workspaces button.focused {
-  background: rgba(53, 53, 53, 0.6);
+  background: #64727D;
+}
+
+#mode,
+#clock,
+#battery,
+#network,
+#backlight,
+#disk,
+#memory,
+#temperature,
+#tray,
+#pulseaudio {
+  padding: 0 16px;
+}
+
+#mode {
+  background: #64727D;
+  border-bottom: 3px solid white;
+}
+
+#network {
+  background-color: #DB6E88;
 }
 
 #clock {
-  margin-top: 16px;
+  background-color: #61AFEF;
+  color: black;
 }
 
-#battery {
-  margin-bottom: 16px;
+#pulseaudio {
+  margin-right: 2px;
+  background-color: #56B6C2;
+  color: black;
+}
+
+#backlight {
+  margin-left: 2px;
+  background-color: #56B6C2;
+  color: black;
+}
+
+#network.disconnected {
+  background-color: #3B414D;
+  color: white;
+}
+
+#battery.charging {
+  color: white;
+  background-color: #26A65B;
+}
+
+@keyframes blink {
+  to {
+    background-color: #ffffff;
+    color: black;
+  }
+}
+
+#battery.warning:not(.charging) {
+  background: #f53c3c;
+  color: white;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: steps(12);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
