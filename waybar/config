@@ -1,128 +1,101 @@
 {
-    "layer": "top",
-    "position": "left",
-    "width": 24,
-    "spacing": 8,
-    "margin-top": 36,
-    "margin-bottom": 36,
-    // "reload_style_on_change": true,
-    "modules-left": [
-        "clock"
-    ],
-    "modules-center": [
-        "sway/workspaces"
-    ],
-    "modules-right": [
-        "bluetooth",
-        "network",
-        "custom/screenrecorder",
-        "wireplumber",
-        "cpu",
-        "memory",
-        "battery",
-        "tray"
-    ],
-    "sway/workspaces": {
-        "format": "{icon}",
-        "all-outputs": true,
-        "disable-scroll": true,
-        "disable-click": false,
+	"layer": "bottom",
+	"position": "bottom",
+	"height": 20,
+	"modules-left": [
+		"sway/workspaces",
+		"sway/mode"
+	],
+	"modules-center": [],
+	"modules-right": [
+		"temperature",
+		"memory",
+		"disk",
+		"pulseaudio",
+		"backlight",
+		"tray",
+		"network",
+		"battery",
+		"clock"
+	],
+	"sway/workspaces": {
+		"disable-scroll": true,
+		"all-outputs": true,
+		"format": "{icon}",
+		"format-icons": {
+			"1": "",
+			"2": "",
+			"3": "",
+			"4": "",
+			"5": ""
+		}
+	},
+	"battery": {
+		"format": "{capacity}% {icon}",
+		"format-icons": [
+			"",
+			"",
+			"",
+			"",
+			""
+		]
+	},
+	"clock": {
+		"format": "{:%H:%M}  ",
+		"format-alt": "{:%a, %d. %b  %H:%M}"
+	},
+	"network": {
+		"interface": "wlp0s20f3",
+		"on-click": "foot -T nm_tui 'nmtui'",
+		"on-click-middle": "rfkill toggle wifi",
+		"format": "{ifname}",
+		"format-wifi": "{essid} ({signalStrength}%) ",
+		"format-ethernet": "{ipaddr}/{cidr} 󰊗",
+		"format-disconnected": "disconnected ",
+		"format-disabled": "disabled ",
+		"tooltip-format": "{ifname} via {gwaddr} 󰊗",
+		"tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+		"max-length": 50
+	},
+	"backlight": {
+		"device": "intel_backlight",
+		"format": "{percent}% "
+	},
+	"disk": {
+		"interval": 60,
+		"format": "{percentage_used}% ",
+		"path": "/"
+	},
+	"memory": {
+		"interval": 30,
+		"format": "{percentage}% ",
+		"max-length": 10
+	},
+	"temperature": {
+		"interval": 30,
+		"format": "{temperatureC}°C "
+	},
+	"tray": {
+		"icon-size": 14,
+		"spacing": 10
+	},
+	"pulseaudio": {
+        "scroll-step": 0, // %, can be a float
+        "format": "{volume}% {icon}    {format_source}",
+        "format-bluetooth": "{icon}",
+        "format-bluetooth-muted": "    {format_source}",
+        "format-muted": "    {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        // "format-alt": "{volume}% {icon} {format_source}",
         "format-icons": {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": "",
-            "5": "",
-            "urgent": "",
-            "focused": "",
-            "default": "",
-            "high-priority-named": [
-                "1",
-                "2"
-            ]
-        }
-    },
-    "wireplumber": {
-        "format": "{icon}\n{volume}",
-        "format-muted": "",
-        "on-click": "pavucontrol",
-        "max-volume": 100,
-        "scroll-step": 0.05,
-        "format-icons": [
-            "",
-            "",
-            ""
-        ]
-    },
-    "tray": {
-        "icon-size": 14,
-        "spacing": 4
-    },
-    "clock": {
-        "interval": 60,
-        "tooltip": true,
-        "format": "{:%H\n••\n%M}",
-        "tooltip-format": "{:%d-%m-%Y\n%A}"
-    },
-    "cpu": {
-        "interval": 10,
-        "format": "\n{usage}",
-        "on-click": "foot -T 'htop' htop"
-    },
-    "memory": {
-        "interval": 30,
-        "format": "\n{percentage}"
-    },
-    "battery": {
-        "bat": "BAT0",
-        "interval": 30,
-        "states": {
-            "warning": 20,
-            "critical": 10
+            "headphone": ["", "", "", ""],
+            "hands-free": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", "", ""]
         },
-        "format": "{icon}\n{capacity}",
-        "format-charging": " \n{capacity}",
-        "format-icons": [
-            "",
-            "",
-            "",
-            "",
-            ""
-        ]
-    },
-    "network": {
-        "format-wifi": "",
-        "format-ethernet": "",
-        "format-disconnected": "",
-        "on-click": "foot -T 'nmtui' nmtui",
-        "tooltip-format": "{essid}: {signalStrength}%\n{gwaddr}"
-    },
-    // "bluetooth": {
-    //     "format": " {status}",
-    //     // "format-disabled": "", // an empty format will hide the module
-    //     "format-connected": " {num_connections} connected",
-    //     "format-connected-battery": " {device_alias} {device_battery_percentage}%",
-    //     "tooltip-format": "{controller_alias}\t{controller_address}",
-    //     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
-    //     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
-    // },
-    "bluetooth": {
-        // "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
-        "format": "",
-        "on-click": "blueberry",
-	    "format-connected-battery": "\n{device_battery_percentage}",
-        "tooltip-format": "{controller_alias}\t{controller_address}",
-        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
-        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
-    },
-    "custom/screenrecorder": {
-        "exec": "$HOME/.config/waybar/waybar-screenrecorder/screenrecorder status",
-        "interval": "once",
-        "signal": 1,
-        "return-type": "json",
-        "tooltip": true,
-        "format": "{}",
-        "on-click": "$HOME/.config/waybar/waybar-screenrecorder/screenrecorder toggle fullscreen",
-        "on-click-right": "$HOME/.config/waybar/waybar-screenrecorder/screenrecorder toggle region"
-    },
+        "on-click": "pavucontrol"
+    }
 }
